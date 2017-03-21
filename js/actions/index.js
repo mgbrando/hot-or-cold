@@ -5,12 +5,12 @@
 		3. Give feedback on guess.
 */
 
-export const GET_NUMBER = 'GET_NUMBER';
-export const getNumber = () => {
-	const randomNumber = Math.floor(Math.random() * 6) + 1;
+export const RESET_GAME = 'RESET_GAME';
+export const resetGame = () => {
+	//const randomNumber = Math.floor(Math.random() * 100) + 1;
 	return {
-		type: GET_NUMBER,
-		randomNumber
+		type: RESET_GAME/*,
+		randomNumber*/
 	};
 };
 
@@ -20,12 +20,12 @@ export const guessNumber = (number) => ({
 		number
 });
 
-export const GET_FEEDBACK = 'GET_FEEDBACK';
+/*export const GET_FEEDBACK = 'GET_FEEDBACK';
 export const getFeedback = (numberGuessed, numberToGuess) => ({
 		type: GET_FEEDBACK,
 		numberGuessed, 
 		numberToGuess
-});
+});*/
 /*const randomNumberAction = generateRandomNumber();
 const guessNumberAction = guessNumber();
 const getFeedbackAction = getFeedback();*/
