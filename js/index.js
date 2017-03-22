@@ -1,10 +1,20 @@
 require('babel-polyfill');
 
-import * as actions from './actions/index';
-import store from './store';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 
-console.log(store.getState());
+import store from './store';
+import Game from './components/game';
+
+document.addEventListener('DOMContentLoaded', () =>
+    ReactDOM.render(<Provider store={store}><Game /></Provider>, document.getElementById('app'))
+);
+
+
+
+/*console.log(store.getState());
 store.dispatch(actions.guessNumber(15));
 console.log(store.getState());
 store.dispatch(actions.resetGame());
-console.log(store.getState());
+console.log(store.getState());*/

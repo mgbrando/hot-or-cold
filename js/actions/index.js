@@ -20,6 +20,11 @@ export const guessNumber = (number) => ({
 		number
 });
 
+export const TYPE_INPUT = 'TYPE_INPUT';
+export const getInput = (input) => ({
+		type: TYPE_INPUT,
+		input
+});
 /*export const GET_FEEDBACK = 'GET_FEEDBACK';
 export const getFeedback = (numberGuessed, numberToGuess) => ({
 		type: GET_FEEDBACK,

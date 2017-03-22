@@ -4,12 +4,13 @@ const initialRepositoryState = {
                                 number: Math.floor(Math.random() * 100) + 1,
                                 guesses: [],
                                 correct: false,
-                                feedback: ""
+                                feedback: "Make your Guess!",
+                                input: ""
 };
 
-export const repositoryReducer = (state=initialRepositoryState, action) => {
+export const gameReducer = (state=initialRepositoryState, action) => {
     if (action.type === actions.RESET_GAME) {
-        return Object.assign({}, state, {number: Math.floor(Math.random() * 100) + 1, guesses: [], correct: false, feedback: ""});
+        return Object.assign({}, state, {number: Math.floor(Math.random() * 100) + 1, guesses: [], correct: false, feedback: "Make your Guess!", input: ""});
     }
     else if (action.type === actions.GUESS_NUMBER) {
         // Find the index of the matching repository
@@ -17,7 +18,7 @@ export const repositoryReducer = (state=initialRepositoryState, action) => {
         let feedback = "";
         if(action.number === state.number){
             correct = true;
-            feedback = "Good guess! You win!";
+            feedback = "You Won. Click new game to play again.";
         }
         else if(Math.abs(state.number - action.number) <= 5){
             feedback = "hot";
@@ -32,6 +33,9 @@ export const repositoryReducer = (state=initialRepositoryState, action) => {
             feedback = "frigid";
         }
         return Object.assign({}, state, {guesses: [...state.guesses, action.number], correct: correct, feedback: feedback});
+    }
+    else if(action.type === actions.TYPE_INPUT){
+        return Object.assign({}, state, {input: action.input});
     }
 
     return state;
