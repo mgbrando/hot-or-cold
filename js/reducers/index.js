@@ -37,6 +37,16 @@ export const gameReducer = (state=initialRepositoryState, action) => {
     else if(action.type === actions.TYPE_INPUT){
         return Object.assign({}, state, {input: action.input});
     }
+    else if(action.type === actions.FETCH_FEWEST_GUESSES_SUCCESS){
+        return Object.assign({}, state, {fewestGuesses: action.fewestGuesses})
+    }
+    else if(action.type === actions.FETCH_FEWEST_GUESSES_SAVE_SUCCESS){
+        if(typeof action.fewestGuesses === Number)
+            return Object.assign({}, state, {fewestGuesses: action.fewestGuesses});
+        else{
+            console.log(action.fewestGuesses);
+        }
+    }
 
     return state;
 };

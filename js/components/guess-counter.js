@@ -4,6 +4,7 @@ function GuessCounter(props){
         return (
             <div className="guess-counter-container">
                 <span>Guess #<span className="guess-counter">{props.guesses}</span>!</span>
+                <span>Fewest Guesses: {props.fewestGuesses}</span>
             </div>
         );
 }
