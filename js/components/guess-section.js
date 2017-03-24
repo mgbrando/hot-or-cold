@@ -18,19 +18,27 @@ export class GuessSection extends React.Component {
     resetGame() {
         //const repositoryName = this.repositoryNameInput.value;
         this.props.dispatch(actions.resetGame());
+        document.getElementById("guess-input").disabled = false;
     }
     guessNumber() {
         //const repositoryName = this.repositoryNameInput.value;
         this.props.dispatch(actions.guessNumber(parseInt(this.props.input)));
         //if(this.props.guesses.length < this.props.fewestGuesses)
-        if(this.props.correct)
-            this.props.dispatch(actions.saveFewestGuesses(parseInt(this.props.guesses.length)));
+       /* if(this.props.correct)
+            this.props.dispatch(actions.saveFewestGuesses(parseInt(this.props.guesses.length)));*/
         document.getElementById('guess-input').value='';
     }
     getInput(event){
         this.props.dispatch(actions.getInput(event.target.value));
     }
-    componentDidMount(){
+    componentDidUpdate(){
+        if(this.props.correct){
+            document.getElementById("guess-input").disabled = true;
+            this.props.dispatch(actions.saveFewestGuesses(parseInt(this.props.guesses.length)));
+        }
+        this.props.dispatch(actions.fetchFewestGuesses());
+    }
+    componentWillMount(){
         this.props.dispatch(actions.fetchFewestGuesses());
     }
     render() {

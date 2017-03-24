@@ -5,7 +5,8 @@ const initialRepositoryState = {
                                 guesses: [],
                                 correct: false,
                                 feedback: "Make your Guess!",
-                                input: ""
+                                input: "",
+                                showInstructionsModal: false
 };
 
 export const gameReducer = (state=initialRepositoryState, action) => {
@@ -32,13 +33,16 @@ export const gameReducer = (state=initialRepositoryState, action) => {
         else{
             feedback = "frigid";
         }
-        return Object.assign({}, state, {guesses: [...state.guesses, action.number], correct: correct, feedback: feedback});
+        return Object.assign({}, state, {guesses: [...state.guesses, action.number], correct: correct, feedback: feedback, input: ''});
     }
     else if(action.type === actions.TYPE_INPUT){
         return Object.assign({}, state, {input: action.input});
     }
+    else if(action.type === actions.TOGGLE_INSTRUCTIONS_MODAL){
+        return Object.assign({}, state, {showInstructionsModal: !state.showInstructionsModal});
+    }
     else if(action.type === actions.FETCH_FEWEST_GUESSES_SUCCESS){
-        return Object.assign({}, state, {fewestGuesses: action.fewestGuesses})
+        return Object.assign({}, state, {fewestGuesses: action.fewestGuesses});
     }
     else if(action.type === actions.FETCH_FEWEST_GUESSES_SAVE_SUCCESS){
         if(typeof action.fewestGuesses === Number)

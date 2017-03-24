@@ -5,6 +5,10 @@ import 'isomorphic-fetch';
 		2. Guess a number.
 		3. Give feedback on guess.
 */
+export const TOGGLE_INSTRUCTIONS_MODAL = 'TOGGLE_INSTRUCTIONS_MODAL';
+export const toggleInstructionsModal = () => ({
+    type: TOGGLE_INSTRUCTIONS_MODAL
+});
 
 export const RESET_GAME = 'RESET_GAME';
 export const resetGame = () => {
